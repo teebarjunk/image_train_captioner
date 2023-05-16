@@ -1,0 +1,206 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://main.gd" type="Script" id=2]
+[ext_resource path="res://aspect.gd" type="Script" id=3]
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+split_offset = 120
+
+[node name="side_panel" type="Panel" parent="HSplitContainer"]
+unique_name_in_owner = true
+margin_right = 120.0
+margin_bottom = 600.0
+rect_clip_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/side_panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="file_filter" type="LineEdit" parent="HSplitContainer/side_panel/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 120.0
+margin_bottom = 24.0
+placeholder_text = "Filter"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/side_panel/VBoxContainer"]
+margin_top = 28.0
+margin_right = 120.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="file_list" type="RichTextLabel" parent="HSplitContainer/side_panel/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+margin_right = 120.0
+margin_bottom = 572.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "x
+y
+s"
+meta_underlined = false
+text = "x
+y
+s"
+fit_content_height = true
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer"]
+margin_left = 132.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/VSplitContainer"]
+margin_right = 892.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/VSplitContainer/VBoxContainer"]
+margin_right = 892.0
+margin_bottom = 20.0
+
+[node name="btn_zip" type="MenuButton" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_right = 32.0
+margin_bottom = 20.0
+text = "Zip"
+flat = false
+
+[node name="btn_recent" type="MenuButton" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 36.0
+margin_right = 92.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Recent"
+flat = false
+
+[node name="dirbutton" type="Button" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 96.0
+margin_right = 492.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="btn_sorton" type="MenuButton" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 496.0
+margin_right = 892.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Sort On"
+flat = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/VSplitContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 892.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="aspect" type="AspectRatioContainer" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 892.0
+margin_bottom = 476.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="preview" type="TextureRect" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer/aspect"]
+unique_name_in_owner = true
+margin_left = 208.0
+margin_right = 684.0
+margin_bottom = 476.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="file_info" type="RichTextLabel" parent="HSplitContainer/VSplitContainer/VBoxContainer/HBoxContainer/aspect"]
+unique_name_in_owner = true
+margin_left = 208.0
+margin_right = 684.0
+margin_bottom = 476.0
+bbcode_enabled = true
+fit_content_height = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/VSplitContainer"]
+margin_top = 512.0
+margin_right = 892.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="btn_new_cap" type="Button" parent="HSplitContainer/VSplitContainer/VBoxContainer2"]
+unique_name_in_owner = true
+margin_right = 892.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "create *.caption"
+
+[node name="edit_cap" type="TextEdit" parent="HSplitContainer/VSplitContainer/VBoxContainer2"]
+unique_name_in_owner = true
+margin_top = 24.0
+margin_right = 892.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+draw_tabs = true
+draw_spaces = true
+highlight_all_occurrences = true
+wrap_enabled = true
+
+[node name="caption_token_count" type="Label" parent="HSplitContainer/VSplitContainer/VBoxContainer2/edit_cap"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "10"
+align = 2
+valign = 2
+
+[node name="dirdialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+margin_right = 617.0
+margin_bottom = 365.0
+window_title = "Open a Directory"
+resizable = true
+mode = 2
+access = 2
+
+[node name="zip_settings_popup" type="Panel" parent="."]
+visible = false
+margin_left = 259.0
+margin_top = 166.0
+margin_right = 502.0
+margin_bottom = 427.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="zip_settings_popup"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="zip_settings_popup/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 14.0
+text = "Export:"
+
+[node name="CheckBox" type="CheckBox" parent="zip_settings_popup/VBoxContainer"]
+margin_top = 18.0
+margin_right = 83.0
+margin_bottom = 42.0
+text = "Captions"
+
+[node name="CheckBox2" type="CheckBox" parent="zip_settings_popup/VBoxContainer"]
+margin_top = 46.0
+margin_right = 83.0
+margin_bottom = 70.0
+text = "Images"
